@@ -1,8 +1,11 @@
 package rnqhstlr.senior.domain;
 
-public enum EmotionCode {
+import lombok.Getter;
 
-    HAPPAY(1, "기쁨"), SAD(2, "슬픔"), ANGRY(3,"화남"),NATUAL(4, "중립")
+@Getter
+public enum EmotionCode {
+    HAPPY(1, "기쁨"), SAD(2, "슬픔"), ANGRY(3,"화남"), NATUAL(4, "중립"),
+    NONE(10, "상태 없음"),
     ;
 
     private int code;

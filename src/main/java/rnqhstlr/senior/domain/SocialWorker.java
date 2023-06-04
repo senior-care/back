@@ -14,7 +14,7 @@ public class SocialWorker {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long socialWorkNo;
+    private Long socialWorkerNo;
     private String name;
     private String birth;
     private String userId;

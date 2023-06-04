@@ -24,7 +24,7 @@ public class SocialWorkerController {
         SocialWorker loginSocialWorker = loginService.login(loginParam.getUserId(), loginParam.getPassword());
 
         HttpSession session = request.getSession();
-        session.setAttribute(SessionConst.LOGIN_SOCIAL_WORKER, loginSocialWorker.getUserId());
+        session.setAttribute(SessionConst.LOGIN_SOCIAL_WORKER, loginSocialWorker);
         return ResponseEntity.ok().build();
     }
 
