@@ -6,10 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import rnqhstlr.senior.dao.IllnessRepository;
 import rnqhstlr.senior.dao.ImageRepository;
 import rnqhstlr.senior.dao.SeniorRepository;
 import rnqhstlr.senior.dao.SocialWorkerRepository;
 import rnqhstlr.senior.domain.*;
+import rnqhstlr.senior.dto.SeniorDetails;
 import rnqhstlr.senior.dto.SeniorList;
 
 import java.time.LocalDate;
@@ -25,6 +27,7 @@ class SeniorServiceImplTest {
     @Autowired SeniorRepository seniorRepository;
     @Autowired ImageRepository imageRepository;
     @Autowired SeniorService seniorService;
+    @Autowired IllnessRepository illnessRepository;
 
     SocialWorker saveSocialWorker;
     @BeforeEach
@@ -48,6 +51,12 @@ class SeniorServiceImplTest {
         Image image = Image.createImage(null, null, null, detectDate, LocalTime.now(), code);
         image.setSenior(senior);
         return imageRepository.save(image);
+    }
+
+    public Illness 노인_질병_추가(Senior senior, LocalDate createdDate, LocalDate recoveryDate, String illnessCode){
+        Illness createIllness = Illness.createIllness(createdDate, recoveryDate, illnessCode);
+        createIllness.setSenior(senior);
+        return illnessRepository.save(createIllness);
     }
 
     @Test
@@ -79,6 +88,40 @@ class SeniorServiceImplTest {
         for(SeniorList list : findSeniors){
             System.out.println(list);
         }
+    }
 
+    @Test
+    @DisplayName("노인 상세 조회에 성공하다.")
+    @Transactional
+    public void findSeniorDetails(){
+        //given
+        Senior senior = 노인_추가("한소회", Gender.F, LocalDate.of(1999, 7, 27), null,
+                "010-3321-6132", "010-3321-6132", LocalDate.of(2020, 1, 1), LocalDate.of(2024, 1, 1));
+
+        노인_질병_추가(senior, LocalDate.of(2022,3,3), LocalDate.of(2022,4,3), "1111");
+        노인_질병_추가(senior, LocalDate.of(2022,2,2), LocalDate.of(2022,2,2), "2222");
+        노인_질병_추가(senior, LocalDate.of(2022,1,1), LocalDate.of(2022,1,1),"3333");
+
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 1) , EmotionCode.SAD);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 1) , EmotionCode.SAD);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 1) , EmotionCode.HAPPY);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 1) , EmotionCode.ANGRY);
+
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 2) , EmotionCode.SAD);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 2) , EmotionCode.HAPPY);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 2) , EmotionCode.HAPPY);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 2) , EmotionCode.ANGRY);
+
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 3) , EmotionCode.ANGRY);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 3) , EmotionCode.SAD);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 3) , EmotionCode.HAPPY);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 3) , EmotionCode.ANGRY);
+
+        //when
+        SeniorDetails seniorDetails = seniorService.findSenior(senior.getSeniorNo(), LocalDate.of(2023, 6, 1),
+                LocalDate.of(2023, 6, 3));
+
+        //then
+        System.out.println(seniorDetails);
     }
 }

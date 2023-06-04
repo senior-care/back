@@ -3,6 +3,7 @@ package rnqhstlr.senior;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import rnqhstlr.senior.dao.IllnessRepository;
 import rnqhstlr.senior.dao.ImageRepository;
 import rnqhstlr.senior.dao.SeniorRepository;
 import rnqhstlr.senior.dao.SocialWorkerRepository;
@@ -14,9 +15,9 @@ public class DummyConfig {
     private final SocialWorkerRepository socialWorkerRepository;
     private final SeniorRepository seniorRepository;
     private final ImageRepository imageRepository;
-
+    private final IllnessRepository illnessRepository;
     @Bean
     public DummyDataInit dummyDataInit(){
-        return new DummyDataInit(socialWorkerRepository, seniorRepository, imageRepository);
+        return new DummyDataInit(socialWorkerRepository, seniorRepository, imageRepository, illnessRepository);
     }
 }
