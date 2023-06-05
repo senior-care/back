@@ -5,11 +5,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import rnqhstlr.senior.domain.SocialWorker;
-import rnqhstlr.senior.dto.SeniorDetails;
-import rnqhstlr.senior.dto.SeniorList;
-import rnqhstlr.senior.dto.SeniorListResponse;
+import rnqhstlr.senior.dto.*;
+import rnqhstlr.senior.service.CalendarService;
 import rnqhstlr.senior.service.SeniorService;
 
 import java.time.LocalDate;
@@ -22,6 +22,7 @@ import java.util.List;
 public class SeniorController {
 
     private final SeniorService seniorService;
+    private final CalendarService calendarService;
 
     @GetMapping("/senior")
     public ResponseEntity<SeniorListResponse> seniorList(HttpSession session){
@@ -40,5 +41,17 @@ public class SeniorController {
 
         SeniorDetails seniorDetails = seniorService.findSenior(seniorNo, startDay, endDay);
         return ResponseEntity.ok(seniorDetails);
+    }
+
+    @GetMapping("/senior/{no}/calendar")
+    public ResponseEntity<CalendarListResponse> seniorCalendarList(@PathVariable("no")Long seniorNo,
+                                                                   @RequestParam("year")Integer year,
+                                                                   @RequestParam("mon")Integer mon){
+
+        LocalDate startDay = LocalDate.of(year, mon, 1);
+        LocalDate endDay = startDay.with(TemporalAdjusters.lastDayOfMonth());
+
+        List<CalendarList> calendarStateList = calendarService.findCalendarStateList(seniorNo, startDay, endDay);
+        return ResponseEntity.ok(new CalendarListResponse(calendarStateList));
     }
 }
