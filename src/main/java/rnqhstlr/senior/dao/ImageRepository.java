@@ -7,6 +7,7 @@ import rnqhstlr.senior.domain.EmotionCode;
 import rnqhstlr.senior.domain.Image;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 public interface ImageRepository extends JpaRepository<Image, Long> {
@@ -29,5 +30,7 @@ public interface ImageRepository extends JpaRepository<Image, Long> {
             "order by count(*) desc " +
             "limit 1 ")
     public Optional<Image> findEmotionCodeByDate(@Param("no")Long seniorNo, @Param("date")LocalDate date);
+
+    public List<Image> findBySenior_SeniorNoAndDetectDateOrderByDetectTimeDesc(Long seniorNo, LocalDate date);
 
 }

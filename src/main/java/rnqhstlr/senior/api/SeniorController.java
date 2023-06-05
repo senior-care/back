@@ -54,4 +54,15 @@ public class SeniorController {
         List<CalendarList> calendarStateList = calendarService.findCalendarStateList(seniorNo, startDay, endDay);
         return ResponseEntity.ok(new CalendarListResponse(calendarStateList));
     }
+
+    @GetMapping("/senior/{no}/calendar/{year}/{mon}/{day}")
+    public ResponseEntity<ImageListResponse> seniorCalendarDetails(@PathVariable("no")Long seniorNo,
+                                                                   @PathVariable("year")Integer year,
+                                                                   @PathVariable("mon")Integer mon,
+                                                                   @PathVariable("day")Integer day){
+        LocalDate findDate = LocalDate.of(year, mon, day);
+
+        List<ImageList> imageList = calendarService.findCalendarDetails(seniorNo, findDate);
+        return ResponseEntity.ok(new ImageListResponse(imageList, imageList.size()));
+    }
 }
