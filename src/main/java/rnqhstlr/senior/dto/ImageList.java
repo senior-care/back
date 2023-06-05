@@ -19,7 +19,7 @@ public class ImageList {
     private String imagePath;
 
     public ImageList(Image image){
-        this.detectTime = image.getDetectTime().format(DateTimeFormatter.ofPattern("HH-mm-ss"));
+        this.detectTime = image.getDetectTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
         this.emotionName = image.getEmotionCode().getDes();
         this.imagePath = image.getImagePath();
     }
