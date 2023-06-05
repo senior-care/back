@@ -32,20 +32,25 @@ public class DummyDataInit {
 
         //노인 더미 데이터 세팅
         Senior senior1 = Senior.createSenior("한소회", Gender.F, LocalDate.of(1999, 7, 27), null,
-                "010-3321-6132", "010-3321-6132", Address.createAddress("11", "1111", "details"),
+                "010-3321-6132", "010-3321-6132", Address.createAddress("대구 광역시", "북구", "태전 1동 224-3"),
                 LocalDate.of(2020, 1, 1), LocalDate.of(2024, 1, 1));
         senior1.setSocialWorker(socialWorker);
         Senior senior2 = Senior.createSenior("이주명", Gender.F, LocalDate.of(1996, 1, 27), null,
-                "010-1234-6132", "010-1234-6132",Address.createAddress("11", "1111", "details"),
+                "010-1234-6132", "010-1234-6132",Address.createAddress("대구 광역시", "북구", "태전 3동 삼성아파트"),
                 LocalDate.of(2022, 1, 1), LocalDate.of(2025, 1, 1));
         senior2.setSocialWorker(socialWorker);
         Senior senior3 = Senior.createSenior("고수", Gender.M, LocalDate.of(2000, 1, 27), null,
-                "010-0987-6132", "010-0987-6132", Address.createAddress("11", "1111", "details"),
+                "010-0987-6132", "010-0987-6132", Address.createAddress("대구 광역시", "북구", "운암2로 한라아파트"),
                 LocalDate.of(2019, 1, 1), LocalDate.of(2025, 1, 1));
         senior3.setSocialWorker(socialWorker);
+        Senior senior4 = Senior.createSenior("구본식", Gender.M, LocalDate.of(1966, 1, 27), null,
+                "010-1111-6132", "010-1234-6132", Address.createAddress("대구 광역시", "북구", "운암 3로 미진아파트"),
+                LocalDate.of(2012, 1, 1), LocalDate.of(2025, 1, 1));
+        senior4.setSocialWorker(socialWorker);
         seniorRepository.save(senior1);
         seniorRepository.save(senior2);
         seniorRepository.save(senior3);
+        seniorRepository.save(senior4);
 
         //노인 이미지 및 상태 더미 데이터 세팅
         Image image1 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 1),
@@ -135,11 +140,11 @@ public class DummyDataInit {
         imageRepository.save(image20);
 
         //노인 질병 더미 데이터 세팅
-        Illness illness1 = Illness.createIllness(LocalDate.of(2022, 2, 4), LocalDate.of(2022, 4, 3),"1111");
+        Illness illness1 = Illness.createIllness(LocalDate.of(2022, 2, 4), LocalDate.of(2023, 4, 3),"당료");
         illness1.setSenior(senior1);
-        Illness illness2 = Illness.createIllness(LocalDate.of(2022, 3, 2), LocalDate.of(2022, 3, 10), "2222");
+        Illness illness2 = Illness.createIllness(LocalDate.of(2022, 3, 2), LocalDate.of(2023, 3, 10), "심정 질환");
         illness2.setSenior(senior1);
-        Illness illness3 = Illness.createIllness(LocalDate.of(2022, 1, 1), LocalDate.of(2022, 1, 1), "3333");
+        Illness illness3 = Illness.createIllness(LocalDate.of(2022, 1, 1), LocalDate.of(2023, 1, 1), "고혈압");
         illness3.setSenior(senior1);
         illnessRepository.save(illness1);
         illnessRepository.save(illness2);
