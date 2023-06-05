@@ -87,6 +87,32 @@ public class DummyDataInit {
                 LocalTime.now(), EmotionCode.ANGRY);
         image12.setSenior(senior1);
 
+        Image image13 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 1),
+                LocalTime.now(), EmotionCode.HAPPY);
+        image13.setSenior(senior1);
+        Image image14 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 1),
+                LocalTime.now(), EmotionCode.ANGRY);
+        image14.setSenior(senior1);
+        Image image15 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 1),
+                LocalTime.now(), EmotionCode.SAD);
+        image15.setSenior(senior1);
+        Image image16 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 1),
+                LocalTime.now(), EmotionCode.ANGRY);
+        image16.setSenior(senior1);
+
+        Image image17 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 3),
+                LocalTime.now(), EmotionCode.HAPPY);
+        image17.setSenior(senior1);
+        Image image18 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 3),
+                LocalTime.now(), EmotionCode.SAD);
+        image18.setSenior(senior1);
+        Image image19 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 3),
+                LocalTime.now(), EmotionCode.SAD);
+        image19.setSenior(senior1);
+        Image image20 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 3),
+                LocalTime.now(), EmotionCode.ANGRY);
+        image20.setSenior(senior1);
+
         imageRepository.save(image1);
         imageRepository.save(image2);
         imageRepository.save(image3);
@@ -99,6 +125,14 @@ public class DummyDataInit {
         imageRepository.save(image10);
         imageRepository.save(image11);
         imageRepository.save(image12);
+        imageRepository.save(image13);
+        imageRepository.save(image14);
+        imageRepository.save(image15);
+        imageRepository.save(image16);
+        imageRepository.save(image17);
+        imageRepository.save(image18);
+        imageRepository.save(image19);
+        imageRepository.save(image20);
 
         //노인 질병 더미 데이터 세팅
         Illness illness1 = Illness.createIllness(LocalDate.of(2022, 2, 4), LocalDate.of(2022, 4, 3),"1111");

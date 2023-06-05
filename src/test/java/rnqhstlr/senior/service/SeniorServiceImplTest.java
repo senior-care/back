@@ -1,5 +1,6 @@
 package rnqhstlr.senior.service;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import rnqhstlr.senior.dao.ImageRepository;
 import rnqhstlr.senior.dao.SeniorRepository;
 import rnqhstlr.senior.dao.SocialWorkerRepository;
 import rnqhstlr.senior.domain.*;
+import rnqhstlr.senior.dto.CalendarList;
 import rnqhstlr.senior.dto.SeniorDetails;
 import rnqhstlr.senior.dto.SeniorList;
 
@@ -28,6 +30,7 @@ class SeniorServiceImplTest {
     @Autowired ImageRepository imageRepository;
     @Autowired SeniorService seniorService;
     @Autowired IllnessRepository illnessRepository;
+    @Autowired CalendarService calendarService;
 
     SocialWorker saveSocialWorker;
     @BeforeEach
@@ -123,5 +126,39 @@ class SeniorServiceImplTest {
 
         //then
         System.out.println(seniorDetails);
+    }
+
+    @Test
+    @DisplayName("지정된 년, 월에 존재하는 일별 최대 감정 코드 리스트 조회에 성공하다.")
+    @Transactional
+    public void findCalendar(){
+        //given
+        Senior senior = 노인_추가("한소회", Gender.F, LocalDate.of(1999, 7, 27), null,
+                "010-3321-6132", "010-3321-6132", LocalDate.of(2020, 1, 1), LocalDate.of(2024, 1, 1));
+
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 1) , EmotionCode.SAD);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 1) , EmotionCode.SAD);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 1) , EmotionCode.HAPPY);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 1) , EmotionCode.ANGRY);
+
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 2) , EmotionCode.SAD);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 2) , EmotionCode.HAPPY);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 2) , EmotionCode.HAPPY);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 2) , EmotionCode.ANGRY);
+
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 3) , EmotionCode.ANGRY);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 3) , EmotionCode.SAD);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 3) , EmotionCode.HAPPY);
+        노인_이미지_추가(senior, LocalDate.of(2023, 6, 3) , EmotionCode.ANGRY);
+
+        //when
+        List<CalendarList> calendarStateList =
+                calendarService.findCalendarStateList(senior.getSeniorNo(), LocalDate.of(2023, 6, 1), LocalDate.of(2023, 6, 30));
+
+        //then
+        Assertions.assertThat(calendarStateList.size()).isEqualTo(3);
+        for(CalendarList list : calendarStateList){
+            System.out.println(list);
+        }
     }
 }
