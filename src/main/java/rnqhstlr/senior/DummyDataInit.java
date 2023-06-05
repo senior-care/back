@@ -74,17 +74,17 @@ public class DummyDataInit {
                 LocalTime.now(), EmotionCode.ANGRY);
         image8.setSenior(senior1);
 
-        Image image9 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 3),
-                LocalTime.now(), EmotionCode.HAPPY);
+        Image image9 = Image.createImage("1111", null, null, LocalDate.of(2023, 6, 3),
+                LocalTime.of(13,1,1), EmotionCode.HAPPY);
         image9.setSenior(senior1);
-        Image image10 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 3),
-                LocalTime.now(), EmotionCode.SAD);
+        Image image10 = Image.createImage("2222", null, null, LocalDate.of(2023, 6, 3),
+                LocalTime.of(14,1,1), EmotionCode.SAD);
         image10.setSenior(senior1);
-        Image image11 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 3),
-                LocalTime.now(), EmotionCode.ANGRY);
+        Image image11 = Image.createImage("3333", null, null, LocalDate.of(2023, 6, 3),
+                LocalTime.of(15,1,1), EmotionCode.ANGRY);
         image11.setSenior(senior1);
-        Image image12 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 3),
-                LocalTime.now(), EmotionCode.ANGRY);
+        Image image12 = Image.createImage("4444", null, null, LocalDate.of(2023, 6, 3),
+                LocalTime.of(12,1,1), EmotionCode.ANGRY);
         image12.setSenior(senior1);
 
         Image image13 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 1),
