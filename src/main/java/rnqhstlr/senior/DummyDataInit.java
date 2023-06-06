@@ -31,15 +31,15 @@ public class DummyDataInit {
         socialWorkerRepository.save(socialWorker);
 
         //노인 더미 데이터 세팅
-        Senior senior1 = Senior.createSenior("한소회", Gender.F, LocalDate.of(1999, 7, 27), null,
+        Senior senior1 = Senior.createSenior("장윤정", Gender.F, LocalDate.of(1942, 1, 12), null,
                 "010-3321-6132", "010-3321-6132", Address.createAddress("대구 광역시", "북구", "태전 1동 224-3"),
                 LocalDate.of(2020, 1, 1), LocalDate.of(2024, 1, 1));
         senior1.setSocialWorker(socialWorker);
-        Senior senior2 = Senior.createSenior("이주명", Gender.F, LocalDate.of(1996, 1, 27), null,
+        Senior senior2 = Senior.createSenior("이주명", Gender.F, LocalDate.of(1956, 1, 27), null,
                 "010-1234-6132", "010-1234-6132",Address.createAddress("대구 광역시", "북구", "태전 3동 삼성아파트"),
                 LocalDate.of(2022, 1, 1), LocalDate.of(2025, 1, 1));
         senior2.setSocialWorker(socialWorker);
-        Senior senior3 = Senior.createSenior("고수", Gender.M, LocalDate.of(2000, 1, 27), null,
+        Senior senior3 = Senior.createSenior("고수", Gender.M, LocalDate.of(1919, 1, 27), null,
                 "010-0987-6132", "010-0987-6132", Address.createAddress("대구 광역시", "북구", "운암2로 한라아파트"),
                 LocalDate.of(2019, 1, 1), LocalDate.of(2025, 1, 1));
         senior3.setSocialWorker(socialWorker);
