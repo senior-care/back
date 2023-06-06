@@ -79,46 +79,42 @@ public class DummyDataInit {
                 LocalTime.now(), EmotionCode.ANGRY);
         image8.setSenior(senior1);
 
-        Image image9 = Image.createImage("https://imagestorge.s3.ap-northeast-2.amazonaws.com/e9ccc210-03a9-11ee-844b-f8d4cd01a6f7.jpg",
-                "e9ccc210-03a9-11ee-844b-f8d4cd01a6f7", "e9ccc210-03a9-11ee-844b-f8d4cd01a6f7", LocalDate.of(2023, 6, 3),
+        Image image9 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 3),
                 LocalTime.of(13,1,1), EmotionCode.HAPPY);
         image9.setSenior(senior1);
-        Image image10 = Image.createImage("https://imagestorge.s3.ap-northeast-2.amazonaws.com/e9ccc210-03a9-11ee-844b-f8d4cd01a6f7.jpg",
-                "e9ccc210-03a9-11ee-844b-f8d4cd01a6f7", "e9ccc210-03a9-11ee-844b-f8d4cd01a6f7", LocalDate.of(2023, 6, 3),
+        Image image10 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 3),
                 LocalTime.of(14,1,1), EmotionCode.SAD);
         image10.setSenior(senior1);
-        Image image11 = Image.createImage("https://imagestorge.s3.ap-northeast-2.amazonaws.com/e9ccc210-03a9-11ee-844b-f8d4cd01a6f7.jpg",
-                "e9ccc210-03a9-11ee-844b-f8d4cd01a6f7", "e9ccc210-03a9-11ee-844b-f8d4cd01a6f7", LocalDate.of(2023, 6, 3),
+        Image image11 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 3),
                 LocalTime.of(15,1,1), EmotionCode.ANGRY);
         image11.setSenior(senior1);
-        Image image12 = Image.createImage("https://imagestorge.s3.ap-northeast-2.amazonaws.com/e9ccc210-03a9-11ee-844b-f8d4cd01a6f7.jpg",
-                "e9ccc210-03a9-11ee-844b-f8d4cd01a6f7", "e9ccc210-03a9-11ee-844b-f8d4cd01a6f7", LocalDate.of(2023, 6, 3),
+        Image image12 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 3),
                 LocalTime.of(12,1,1), EmotionCode.ANGRY);
         image12.setSenior(senior1);
 
-        Image image13 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 1),
+        Image image13 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 4),
                 LocalTime.now(), EmotionCode.HAPPY);
         image13.setSenior(senior1);
-        Image image14 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 1),
+        Image image14 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 4),
                 LocalTime.now(), EmotionCode.ANGRY);
         image14.setSenior(senior1);
-        Image image15 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 1),
+        Image image15 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 4),
                 LocalTime.now(), EmotionCode.SAD);
         image15.setSenior(senior1);
-        Image image16 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 1),
+        Image image16 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 4),
                 LocalTime.now(), EmotionCode.ANGRY);
         image16.setSenior(senior1);
 
-        Image image17 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 3),
+        Image image17 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 5),
                 LocalTime.now(), EmotionCode.HAPPY);
         image17.setSenior(senior1);
-        Image image18 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 3),
+        Image image18 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 5),
                 LocalTime.now(), EmotionCode.SAD);
         image18.setSenior(senior1);
-        Image image19 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 3),
+        Image image19 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 5),
                 LocalTime.now(), EmotionCode.SAD);
         image19.setSenior(senior1);
-        Image image20 = Image.createImage(null, null, null, LocalDate.of(2023, 5, 3),
+        Image image20 = Image.createImage(null, null, null, LocalDate.of(2023, 6, 5),
                 LocalTime.now(), EmotionCode.ANGRY);
         image20.setSenior(senior1);
 
@@ -144,7 +140,7 @@ public class DummyDataInit {
         imageRepository.save(image20);
 
         //노인 질병 더미 데이터 세팅
-        Illness illness1 = Illness.createIllness(LocalDate.of(2022, 2, 4), LocalDate.of(2023, 4, 3),"당료");
+        Illness illness1 = Illness.createIllness(LocalDate.of(2022, 2, 4), LocalDate.of(2023, 4, 3),"당뇨");
         illness1.setSenior(senior1);
         Illness illness2 = Illness.createIllness(LocalDate.of(2022, 3, 2), LocalDate.of(2023, 3, 10), "심정 질환");
         illness2.setSenior(senior1);
